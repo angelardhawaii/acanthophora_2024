@@ -1,22 +1,17 @@
 # Calculate mean supersaturation time by period 
 
-# For runs 1-7
 # Period 1 is days 1-3 and uses Ek of day 1 as threshold
 # Period 2 is days 4-5 and uses Ek of day 5 as threshold
 # Period 3 is days 6-8 and uses Ek of day 9 as threshold
-
-# For runs 8-9 which don't have a day 5 measurement
-# Period 1 is days 1-4 and uses Ek of day 1 as threshold
-# Period 2 is days 5-8 and uses Ek of day 9 as threshold
 
 # Desired output columns
 # specimen_id run lanai_side treatment temp rlc_order plant_id  species supersat_time_p1 supersat_time_p2 supersat_time_p3 supersat_time_total
 
 # execute the R program that populates the ek data frame
-source("./populate_ek.R")
+source("./hsat/populate_ek.R")
 
 # execute the R program that populates the irradiance data frame
-source("./populate_irradiance.R")
+source("./hsat/populate_irradiance.R")
 
 # Make a new dataframe by selecting the named columns from the first day of each run in the dataset ek 
 supersat <- ek[ek$rlc_day == 1, c(
@@ -127,5 +122,5 @@ supersat$dspi_pmax5 <- supersat$supersat_p2 * supersat$day5_pmax_min
 supersat$dspi_pmax9 <- supersat$supersat_p3 * supersat$day9_pmax_min
 supersat$dspi_pmax_total <- supersat$dspi_pmax1 + supersat$dspi_pmax5 + supersat$dspi_pmax9
 
-write.csv(supersat, "./output/mean_supersaturation_by_period.csv")
-write.csv(supersat, "../ek_irrad_model/input_data/mean_supersaturation_by_period.csv")
+write.csv(supersat, "./hsat/output/mean_supersaturation_by_period.csv")
+write.csv(supersat, "./ek_hsat_dspi_models/input_data/mean_supersaturation_by_period.csv")

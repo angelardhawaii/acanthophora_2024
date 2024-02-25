@@ -1,6 +1,6 @@
 # These are time series of the irradiance measurements
 # The 3rd column is the value of interest (irradiance)
-irradiance <- read.csv("./data_irradiance/acan_r1_r2.csv")
+irradiance <- read.csv("./hsat/data_irradiance/acan_r1_r2.csv")
 
 # Make sure the datread.csv()# Make sure the date is loaded as date
 irradiance$posix_date <- as.POSIXct(irradiance$date, format = "%m/%d/%y", tz = "")

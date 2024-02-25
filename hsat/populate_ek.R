@@ -1,6 +1,6 @@
 # Acanthophora spicifera populate_ek
 
-ek = read.csv("./data_ek/acan_ek_alpha_normalized.csv")
+ek = read.csv("./hsat/data_ek/acan_ek_alpha_normalized.csv")
 # Make  sure the date is loaded as date
 ek$posix_date <- as.POSIXct(ek$Date, format = "%Y-%m-%d")
 ek$rlc_order <- as.factor(ek$rlc_order)
